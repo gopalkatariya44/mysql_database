@@ -21,61 +21,123 @@
 <div class="container">
     <form method="post" action="/update_user/{{ user_data[index]['id'] }}">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input value="{{ user_data[index]['email'] }}" name="email" type="email" class="form-control"
-                   id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Enter email">
+            <label for="exampleInputEmail1">First name</label>
+            <input value="{{ user_data[index]['firstname'] }}" name="firstname" type="text" class="form-control"
+                   id="exampleInputEmail1"
+                   aria-describedby="emailHelp"
+                   placeholder="Enter firstname">
         </div>
-
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input value="{{ user_data[index]['password'] }}" name="password" type="password" class="form-control"
-                   id="exampleInputPassword1"
-                   placeholder="Password">
+            <label for="exampleInputEmail1">Last name</label>
+            <input value="{{ user_data[index]['lastname'] }}" name="lastname" type="text" class="form-control"
+                   id="exampleInputEmail1"
+                   aria-describedby="emailHelp"
+                   placeholder="Enter lastname">
         </div>
-
+        <br>
+        <label for="exampleInputEmail1">Gender</label>
+        <div class="form-check">
+            {% if "male" == user_data[index]['gender'] %}
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" checked>
+            {% else %}
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male">
+            {% endif %}
+            <label class="form-check-label" for="exampleRadios1">
+                Male
+            </label>
+        </div>
+        <div class="form-check">
+            {% if "female" == user_data[index]['gender'] %}
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female" checked>
+            {% else %}
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="female">
+            {% endif %}
+            <label class="form-check-label" for="exampleRadios2">
+                Female
+            </label>
+        </div>
+        <br>
         <div class="form-group">
             <label for="exampleInputPassword1">Account Type</label>&nbsp;
             <select name="account_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 {% if "Student" == user_data[index]['account_type'] %}
                     <option value="Student" selected>Student</option>
-                {% elif "Teacher" == user_data[index]['account_type'] %}
+                {% else %}
+                    <option value="Student">Student</option>
+                {% endif %}
+                {% if "Teacher" == user_data[index]['account_type'] %}
                     <option value="Teacher" selected>Teacher</option>
-                {% elif "Engineer" == user_data[index]['account_type'] %}
+                {% else %}
+                    <option value="Teacher">Teacher</option>
+                {% endif %}
+                {% if "Engineer" == user_data[index]['account_type'] %}
                     <option value="Engineer" selected>Engineer</option>
+                {% else %}
+                    <option value="Engineer">Engineer</option>
                 {% endif %}
             </select>
         </div>
         <div class="form-check">
-            <input name="hobbies" class="form-check-input" type="checkbox" value="playing chess" id="flexCheckDefault"
-                   checked>
+            {% if "playing chess" in user_data[index]['hobbies'] %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="playing chess"
+                       id="flexCheckDefault"
+                       checked>
+            {% else %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="playing chess"
+                       id="flexCheckDefault"
+                >
+            {% endif %}
             <label class="form-check-label" for="flexCheckDefault">
                 playing chess
             </label>
         </div>
         <div class="form-check">
-            <input name="hobbies" class="form-check-input" type="checkbox" value="writing" id="flexCheckDefault">
+            {% if "writing" in user_data[index]['hobbies'] %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="writing" id="flexCheckDefault"
+                       checked>
+            {% else %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="writing" id="flexCheckDefault">
+            {% endif %}
             <label class="form-check-label" for="flexCheckDefault">
                 writing
             </label>
         </div>
         <div class="form-check">
-            <input name="hobbies" class="form-check-input" type="checkbox" value="cooking" id="flexCheckDefault">
+            {% if "cooking" in user_data[index]['hobbies'] %}
+
+                <input name="hobbies" class="form-check-input" type="checkbox" value="cooking" id="flexCheckDefault"
+                       checked>
+            {% else %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="cooking" id="flexCheckDefault">
+            {% endif %}
             <label class="form-check-label" for="flexCheckDefault">
                 cooking
             </label>
         </div>
         <div class="form-check">
-            <input name="hobbies" class="form-check-input" type="checkbox" value="traveling" id="flexCheckDefault"
-                   checked>
+            {% if "traveling" in user_data[index]['hobbies'] %}
+
+                <input name="hobbies" class="form-check-input" type="checkbox" value="traveling" id="flexCheckDefault"
+                       checked>
+            {% else %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="traveling" id="flexCheckDefault"
+                >
+            {% endif %}
             <label class="form-check-label" for="flexCheckDefault">
                 traveling
             </label>
         </div>
         <div class="form-check">
-            <input name="hobbies" class="form-check-input" type="checkbox" value="reading books" id="flexCheckChecked"
-                   checked>
+            {% if "reading books" in user_data[index]['hobbies'] %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="reading books"
+                       id="flexCheckChecked"
+                       checked>
+            {% else %}
+                <input name="hobbies" class="form-check-input" type="checkbox" value="reading books"
+                       id="flexCheckChecked"
+                >
+            {% endif %}
             <label class="form-check-label" for="flexCheckChecked">
                 reading books
             </label>
